@@ -4,6 +4,8 @@ import { HashRouter, Navigate, Route, Routes } from 'react-router';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 
+import './App.css';
+
 const App: FC = () => {
   return (
     <HashRouter>

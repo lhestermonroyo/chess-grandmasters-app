@@ -1,14 +1,16 @@
-const API_URL = 'https://api.chess.com/pub/';
+const API_URL = 'https://api.chess.com/pub';
 
-export const fetchGMList = async (): Promise<any[]> => {
+export const fetchGMList = async (): Promise<string[]> => {
   try {
-    const response = await fetch(`${API_URL}leaders/grandmasters`);
+    const response = await fetch(`${API_URL}/titled/GM`);
 
     if (!response.ok) {
       throw new Error('Failed to fetch grandmasters');
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    return data?.players;
   } catch (error) {
     console.log('Error fetching grandmasters:', error);
     throw new Error('Failed to fetch grandmasters');
@@ -17,7 +19,7 @@ export const fetchGMList = async (): Promise<any[]> => {
 
 export const fetchGMProfile = async (username: string): Promise<any> => {
   try {
-    const response = await fetch(`${API_URL}player/${username}`);
+    const response = await fetch(`${API_URL}/player/${username}`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch profile for ${username}`);
