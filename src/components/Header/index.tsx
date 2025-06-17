@@ -23,6 +23,8 @@ const Header: FC = () => {
               }}
             />
           }
+          target="_blank"
+          href="https://github.com/lhestermonroyo/chess-grandmasters-app"
         />
       </Tooltip>
     </div>

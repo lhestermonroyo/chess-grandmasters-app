@@ -150,7 +150,8 @@ const Profile: FC = () => {
                 <Button
                   size="large"
                   type="primary"
-                  onClick={() => window.open(profile?.url, '_blank')}
+                  target="_blank"
+                  href={`https://www.chess.com/member/${profile?.username}`}
                 >
                   Visit Chess.com Profile
                 </Button>
