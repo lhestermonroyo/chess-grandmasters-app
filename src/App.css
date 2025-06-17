@@ -22,8 +22,12 @@ body {
   margin: 0;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .header {
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
 }
@@ -49,4 +53,38 @@ body {
 .ant-list-item:hover {
   background-color: #f0f0f0;
   transition: all 0.2s ease-in-out;
+}
+
+.page-title {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.profile-panel {
+  margin-top: 24px;
+}
+
+.detail-item,
+.detail-item.left {
+  text-align: left;
+}
+
+.detail-item.center {
+  text-align: center;
+}
+
+.detail-item.right {
+  text-align: right;
+}
+
+.detail-item h2.ant-typography,
+.detail-item h5.ant-typography,
+.detail-item div.ant-typography {
+  margin-bottom: 0px;
+}
+
+.profile-card {
+  margin-top: 24px;
+  margin-bottom: 24px;
 }

@@ -46,7 +46,6 @@ const Home: FC = () => {
 
   return (
     <Main>
-      <Header />
       <Search onSearchChange={setSearch} />
       <List
         bordered

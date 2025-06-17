@@ -1,9 +1,13 @@
 import { Col, Row } from 'antd';
+import Header from '../../components/Header';
 
 const Main = ({ children }: { children: React.ReactNode }) => {
   return (
     <Row justify="center" align="middle">
-      <Col flex="1000px">{children}</Col>
+      <Col flex="1000px">
+        <Header />
+        {children}
+      </Col>
     </Row>
   );
 };
