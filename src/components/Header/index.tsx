@@ -3,6 +3,8 @@ import { Button, Space, Tooltip, Typography } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import logo from '../../assets/logo.png';
 
+const githubUrl = 'https://github.com/lhestermonroyo/chess-grandmasters-app';
+
 const Header: FC = () => {
   return (
     <div className="header">
@@ -24,7 +26,7 @@ const Header: FC = () => {
             />
           }
           target="_blank"
-          href="https://github.com/lhestermonroyo/chess-grandmasters-app"
+          href={githubUrl}
         />
       </Tooltip>
     </div>

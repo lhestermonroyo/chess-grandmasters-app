@@ -20,6 +20,8 @@ import LiveClock from '../../components/LastOnline';
 import MainDetailItem from '../../components/MainDetailItem';
 import DetailItem from '../../components/DetailItem';
 
+const chessMemberUrl = 'https://www.chess.com/member';
+
 const Profile: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [profile, setProfile] = useState<any>(null); // Replace 'any' with a proper type when available
@@ -137,7 +139,7 @@ const Profile: FC = () => {
                     size="large"
                     type="primary"
                     target="_blank"
-                    href={`https://www.chess.com/member/${profile?.username}`}
+                    href={`${chessMemberUrl}/${profile?.username}`}
                   >
                     Visit Chess.com Profile
                   </Button>
