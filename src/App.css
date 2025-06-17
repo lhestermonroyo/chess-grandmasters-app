@@ -84,6 +84,11 @@ body {
   margin-bottom: 0px;
 }
 
+.detail-item h5.ant-typography {
+  margin-top: 2px !important;
+  text-transform: capitalize;
+}
+
 .profile-card {
   margin-top: 24px;
   margin-bottom: 24px;

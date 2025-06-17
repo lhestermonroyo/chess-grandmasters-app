@@ -17,29 +17,8 @@ import { LeftOutlined } from '@ant-design/icons';
 import { format } from 'date-fns';
 import Main from '../../layout/Main';
 import LiveClock from '../../components/LastOnline';
-
-const DetailItem = ({
-  label,
-  value,
-  align = 'left',
-  size = 'large'
-}: {
-  label: string;
-  value: string | number;
-  align?: 'left' | 'center' | 'right';
-  size?: 'middle' | 'large';
-}) => {
-  return (
-    <div className={`detail-item ${align}`}>
-      {size === 'large' ? (
-        <Typography.Title level={5}>{value}</Typography.Title>
-      ) : (
-        <Typography.Paragraph strong>{value}</Typography.Paragraph>
-      )}
-      <Typography.Text type="secondary">{label}</Typography.Text>
-    </div>
-  );
-};
+import MainDetailItem from '../../components/MainDetailItem';
+import DetailItem from '../../components/DetailItem';
 
 const Profile: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -135,22 +114,18 @@ const Profile: FC = () => {
                   style={{ marginBottom: 12 }}
                 >
                   <Col flex={1}>
-                    <DetailItem
+                    <MainDetailItem
                       label="Joined last"
                       value={format(
                         new Date(profile?.joined * 1000).toUTCString(),
                         'MMMM dd, yyyy'
                       )}
-                      align="center"
-                      size="middle"
                     />
                   </Col>
                   <Col flex={1}>
-                    <DetailItem
+                    <MainDetailItem
                       label="Followers"
                       value={profile?.followers || 0}
-                      align="center"
-                      size="middle"
                     />
                   </Col>
                   <Col flex={1}>
