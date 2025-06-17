@@ -28,6 +28,8 @@ const Home: FC = () => {
       }
     } catch (error) {
       notification.error({
+        closable: true,
+        duration: 5,
         message: 'Error',
         description: 'Failed to fetch grandmasters. Please try again later.'
       });

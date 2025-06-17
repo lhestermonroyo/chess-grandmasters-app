@@ -3,7 +3,7 @@ import Header from '../../components/Header';
 
 const Main = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Row justify="center" align="middle">
+    <Row className="main" justify="center" align="middle">
       <Col flex="1000px">
         <Header />
         {children}

@@ -7,6 +7,7 @@ import {
   Card,
   Col,
   Divider,
+  notification,
   Row,
   Skeleton,
   Space,
@@ -66,7 +67,13 @@ const Profile: FC = () => {
         setProfile(data);
       }
     } catch (error) {
-      console.log('Error fetching profile:', error);
+      notification.error({
+        closable: true,
+        duration: 5,
+        message: 'Error',
+        description: 'Failed to fetch grandmasters. Please try again later.'
+      });
+      navigate('/');
     } finally {
       setLoading(false);
     }
@@ -80,12 +87,14 @@ const Profile: FC = () => {
     );
   }
 
-  console.log('rendering profile:', profile);
-
   return (
     <Main>
       <Space direction="horizontal" align="center" className="full-width">
-        <Button icon={<LeftOutlined />} onClick={() => navigate('/')}>
+        <Button
+          size="large"
+          icon={<LeftOutlined />}
+          onClick={() => navigate('/')}
+        >
           Back
         </Button>
         <Typography.Text strong className="page-title">

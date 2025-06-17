@@ -8,7 +8,7 @@ const ListItem = ({ item }: { item: string }) => {
     <List.Item>
       <List.Item.Meta className="list-item-meta" title={item} />
       <div>
-        <Button onClick={() => navigate(`/profile/${item}`)}>
+        <Button size="large" onClick={() => navigate(`/profile/${item}`)}>
           View Profile
         </Button>
       </div>
