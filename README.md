@@ -24,7 +24,13 @@ cd chess-grandmasters-app
 npm install
 ```
 
-4. Run the app
+4. Create a `.env` file in the root directory and add your environment variables:
+
+```
+VITE_API_URL=<API key>
+```
+
+5. Run the app
 
 ```
 npm run dev
