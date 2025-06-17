@@ -8,7 +8,7 @@ const Header: FC = () => {
     <div className="header">
       <Space className="logo-container" direction="horizontal" align="center">
         <img src={logo} alt="logo" />
-        <Typography.Text strong>Chess Grandmasters App</Typography.Text>
+        <Typography.Text strong>Chess Grandmasters</Typography.Text>
       </Space>
       <Tooltip title="View on GitHub">
         <Button
