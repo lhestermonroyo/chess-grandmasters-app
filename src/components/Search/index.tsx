@@ -28,7 +28,6 @@ const Search: FC<SearchProps> = ({ onSearchChange }) => {
       prefix={<SearchOutlined size={24} />}
       placeholder="Search grandmasters..."
       onChange={(e) => handleChange(e.target.value)}
-      style={{ marginBottom: 20 }}
     />
   );
 };

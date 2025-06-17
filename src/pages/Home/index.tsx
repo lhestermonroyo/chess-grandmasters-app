@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useState, type FC } from 'react';
-import { List, notification } from 'antd';
+import { List, notification, Pagination, Space } from 'antd';
 import { fetchGMList } from '../../services/chess.service';
-import Header from '../../components/Header';
 import Main from '../../layout/Main';
 import Search from '../../components/Search';
 import ListItem from '../../components/ListItem';
 
+const PAGE_SIZE = 20;
+
 const Home: FC = () => {
+  const [search, setSearch] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [grandmasters, setGrandmasters] = useState<string[]>([]);
-  const [search, setSearch] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchGrandMasters();
@@ -46,16 +48,27 @@ const Home: FC = () => {
 
   return (
     <Main>
-      <Search onSearchChange={setSearch} />
-      <List
-        bordered
-        size="large"
-        loading={loading}
-        dataSource={filtered}
-        renderItem={(item, index) => (
-          <ListItem key={item} item={item} index={index} />
-        )}
-      />
+      <Space
+        direction="vertical"
+        className="full-width"
+        style={{ marginBottom: 24 }}
+      >
+        <Search onSearchChange={setSearch} />
+        <List
+          bordered
+          size="large"
+          loading={loading}
+          dataSource={filtered}
+          renderItem={(item) => <ListItem key={item} item={item} />}
+          pagination={{
+            current: currentPage,
+            pageSize: PAGE_SIZE,
+            total: filtered.length,
+            onChange: (page) => setCurrentPage(page),
+            showSizeChanger: false
+          }}
+        />
+      </Space>
     </Main>
   );
 };
