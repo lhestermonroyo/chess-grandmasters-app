@@ -1,20 +1,21 @@
-import { useEffect, useState, type FC } from 'react';
-import { Avatar, Button, List, notification } from 'antd';
+import { useEffect, useMemo, useState, type FC } from 'react';
+import { List, notification } from 'antd';
 import { fetchGMList } from '../../services/chess.service';
 import Header from '../../components/Header';
 import Main from '../../layout/Main';
+import Search from '../../components/Search';
+import ListItem from '../../components/ListItem';
 
-// TODO: Implement display of chess grandmasters list
 const Home: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [grandmasters, setGrandmasters] = useState<string[]>([]);
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
-    // Fetch grandmasters when the component mounts
-    fetchGrandmasters();
+    fetchGrandMasters();
   }, []);
 
-  const fetchGrandmasters = async () => {
+  const fetchGrandMasters = async () => {
     try {
       setLoading(true);
 
@@ -22,10 +23,6 @@ const Home: FC = () => {
 
       if (data && Array.isArray(data)) {
         setGrandmasters(data);
-        notification.success({
-          message: 'Success',
-          description: 'Grandmasters fetched successfully!'
-        });
       }
     } catch (error) {
       notification.error({
@@ -37,30 +34,27 @@ const Home: FC = () => {
     }
   };
 
+  const filtered = useMemo(() => {
+    if (!search) {
+      return grandmasters;
+    }
+
+    return grandmasters.filter((gm) =>
+      gm.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [grandmasters, search]);
+
   return (
     <Main>
       <Header />
+      <Search onSearchChange={setSearch} />
       <List
         bordered
         size="large"
         loading={loading}
-        dataSource={grandmasters}
+        dataSource={filtered}
         renderItem={(item, index) => (
-          <List.Item key={item}>
-            <List.Item.Meta
-              className="list-item-meta"
-              avatar={
-                <Avatar
-                  alt="Grandmaster Avatar"
-                  src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
-                />
-              }
-              title={item}
-            />
-            <div>
-              <Button>View Profile</Button>
-            </div>
-          </List.Item>
+          <ListItem key={item} item={item} index={index} />
         )}
       />
     </Main>
