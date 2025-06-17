@@ -15,6 +15,7 @@ import {
 import { LeftOutlined } from '@ant-design/icons';
 import { format } from 'date-fns';
 import Main from '../../layout/Main';
+import LiveClock from '../../components/LastOnline';
 
 const DetailItem = ({
   label,
@@ -71,8 +72,6 @@ const Profile: FC = () => {
     }
   };
 
-  console.log('profile', profile);
-
   if (loading || !profile) {
     return (
       <Main>
@@ -80,6 +79,8 @@ const Profile: FC = () => {
       </Main>
     );
   }
+
+  console.log('rendering profile:', profile);
 
   return (
     <Main>
@@ -142,15 +143,7 @@ const Profile: FC = () => {
                   />
                 </Col>
                 <Col flex={1}>
-                  <DetailItem
-                    label="Followers"
-                    value={format(
-                      new Date(profile?.last_online * 1000).toUTCString(),
-                      'MMMM dd, yyyy'
-                    )}
-                    align="center"
-                    size="middle"
-                  />
+                  <LiveClock value={Number(profile?.last_online || 0)} />
                 </Col>
               </Row>
               <Row align="middle" justify="center">
